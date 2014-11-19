@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="screen.css" media="screen" rel="stylesheet" type="text/css">
+		<script src="weheart.js"></script>
+	</head>
+	<body>
+		<h1>weheart svg</h1>
+		<svg width="100%" viewBox="0 0 1 1" id="heartSVG">
+		</svg>
+		left: <input type="text" id="leftTextField" onkeyup="javascript:updateLeftColor()"></input>
+		right: <input type="text" id="rightTextField" onkeyup="javascript:updateRightColor()"></input>
+	</body>
+	<script>
+		function heartSVG() {
+			return document.getElementById("heartSVG");
+		}
+
+		function minimumSVGDimension() {
+			var result = 0;
+
+			var heart = heartSVG();
+			if (heart)
+			{
+				var boundingBox = heart.getBBox();
+				if (boundingBox.width < boundingBox.height)
+				{
+					result = boundingBox.width;
+				} else
+				{
+					result = boundingBox.height;
+				}
+			}
+			return result;
+		}
+
+		function updateLeftColor() {
+		    var textField = document.getElementById("leftTextField");
+            if (textField)
+            {
+            	weheartInstance.leftFillColor = textField.value;
+            }
+		}
+
+		function updateRightColor() {
+		    var textField = document.getElementById("rightTextField");
+            if (textField)
+            {
+            	weheartInstance.rightFillColor = textField.value;
+            }
+		}
+
+		var weheartInstance = new weheart();
+
+		var heartSVGElement = heartSVG();
+		if (heartSVGElement)
+		{
+			heartSVGElement.appendChild(weheartInstance);
+		} else
+		{
+			console.log("Error retrieving heartSVG element, unable to show heart");
+		}
+
+		var translate = "translate(" + 0.333 / 1.5 + "," + -0.075 + ")";
+		var scale = minimumSVGDimension() / ( Math.sqrt(1 / 2) * 2);
+		var scaleString = "scale(" + scale + ")";
+		weheartInstance.setAttribute('transform', translate + " " + scaleString);
+
+		var leftTextField = document.getElementById("leftTextField");
+		leftTextField.value = weheartInstance.leftFillColor;
+		var rightTextField = document.getElementById("rightTextField");
+		rightTextField.value = weheartInstance.rightFillColor;
+	</script>
+</html>
