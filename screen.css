@@ -1,0 +1,80 @@
+/* from http://weheart.github.io */
+body {
+  color: #333;
+  font-family: Helvetica, sans-serif;
+  margin: 0 10%;
+  line-height: 22px;
+}
+
+a {
+  color: #f64e54;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+small {
+  display: block;
+  color: grey;
+}
+
+ul ul {
+  margin-bottom: 8px;
+}
+
+.manifest {
+  margin-bottom: 32px;
+}
+
+.manifest p {
+  font-weight: bold;
+  font-size: 32px;
+  margin: 0;
+  line-height: 38px;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.logo {
+  width: 195px;
+  height: 178px;
+  display: block;
+  margin: 36px 0 36px 10%;
+}
+
+.variations img {
+  width: 60px;
+  height: 60px;
+  padding: 16px;
+}
+
+.variations small {
+  margin-bottom: 10px;
+}
+
+.credits {
+  margin-top: 36px;
+  margin-bottom: 36px;  
+}
+
+@media (max-width: 600px) {
+  .manifest {
+    margin-bottom: -6px;
+  }
+  
+  .manifest p {
+    font-size: 22px;
+    line-height: 28px;
+    padding-bottom: 8px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  
+  ul, ol {
+    margin-left: -20px;
+  }
+}
