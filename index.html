@@ -8,8 +8,9 @@
 		<h1>weheart svg</h1>
 		<svg width="100%" viewBox="0 0 1 1" id="heartSVG">
 		</svg>
-		left: <input type="text" id="leftTextField" onkeyup="javascript:updateLeftColor()"></input>
-		right: <input type="text" id="rightTextField" onkeyup="javascript:updateRightColor()"></input>
+		left <input type="text" id="leftTextField" onkeyup="javascript:updateLeftColor()"></input><br/>
+		center <input type="text" id="centerTextField" onkeyup="javascript:updateCenterColor()"></input><br/>		
+		right <input type="text" id="rightTextField" onkeyup="javascript:updateRightColor()"></input><br/>
 	</body>
 	<script>
 		function heartSVG() {
@@ -42,6 +43,14 @@
             }
 		}
 
+		function updateCenterColor() {
+		    var textField = document.getElementById("centerTextField");
+            if (textField)
+            {
+            	weheartInstance.centerFillColor = textField.value;
+            }
+		}
+
 		function updateRightColor() {
 		    var textField = document.getElementById("rightTextField");
             if (textField)
@@ -66,8 +75,14 @@
 		var scaleString = "scale(" + scale + ")";
 		weheartInstance.setAttribute('transform', translate + " " + scaleString);
 
+		weheartInstance.rightFillColor = 'rgb(47,191,224)';
+		weheartInstance.centerFillColor = 'rgb(45,58,74';
+		weheartInstance.leftFillColor = 'rgb(246,78,84)';
+
 		var leftTextField = document.getElementById("leftTextField");
 		leftTextField.value = weheartInstance.leftFillColor;
+		var centerTextField = document.getElementById("centerTextField");
+		centerTextField.value = weheartInstance.centerFillColor;
 		var rightTextField = document.getElementById("rightTextField");
 		rightTextField.value = weheartInstance.rightFillColor;
 	</script>

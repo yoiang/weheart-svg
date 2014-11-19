@@ -10,14 +10,22 @@ function weheart() {
 
   function newAtriumElement(rotation) {
     var result = document.createElementNS("http://www.w3.org/2000/svg", 'path');
-    result.setAttribute('d', "m 0 0.333 v 0.666 h 0.666 v -0.666 h -0.666 a 0.333,0.333 0 1,1 0.666,0 z");
-
-    result.setAttribute('fill-opacity', 0.5);
+    result.setAttribute('d', "m 0 0.333 a 0.333,0.333 0 1,1 0.666,0 h-0.666 z");
     result.setAttribute('fill', randomColor() );
-
     var rotationString = "rotate(" + rotation + "," + 0.333 + "," + 0.666 + ")";
     result.setAttribute('transform', rotationString);
+    return result;
+  }
 
+  function newCenterElement() {
+    var result = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
+    result.setAttribute('x', "0");
+    result.setAttribute('y', "0.333");
+    result.setAttribute('width', "0.666");
+    result.setAttribute('height', "0.666");
+    result.setAttribute('fill', randomColor() );
+    var rotationString = "rotate(" + 45 + "," + 0.333 + "," + 0.666 + ")";
+    result.setAttribute('transform', rotationString);
     return result;
   }
 
@@ -29,12 +37,25 @@ function weheart() {
   result.rightAtrium.id = "rightAtrium";
   result.appendChild(result.rightAtrium);
 
+  result.center = newCenterElement();
+  result.center.id = "center";
+  result.appendChild(result.center);
+
   Object.defineProperty(result, 'leftFillColor', {
     get: function() {
       return this.leftAtrium.getAttribute('fill');
     },
     set: function(value) {
       this.leftAtrium.setAttribute('fill', value);
+    }
+  });
+  
+  Object.defineProperty(result, 'centerFillColor', {
+    get: function() {
+      return this.center.getAttribute('fill');
+    },
+    set: function(value) {
+      this.center.setAttribute('fill', value);
     }
   });
 
@@ -46,9 +67,6 @@ function weheart() {
       this.rightAtrium.setAttribute('fill', value);
     }
   });
-
-  result.rightFillColor = 'rgb(47,191,224)';
-  result.leftFillColor = 'rgb(246,78,84)';
 
   return result;
 }
